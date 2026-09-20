@@ -1,0 +1,339 @@
+@font-face {
+font-family: "Minecraft";
+src: url("Minecraft.ttf") format("truetype");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+margin: 0;
+width: 100%;
+height: 100%;
+overflow: hidden;
+}
+
+body {
+background: #080604;
+color: white;
+font-family: "Minecraft", monospace;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+/* =========================
+WRAPPER (Centers everything together)
+========================= */
+
+.wrapper {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+gap: 25px;
+}
+
+/* =========================
+PUMPKIN CUBE
+========================= */
+
+.scene {
+width: 260px;
+height: 260px;
+perspective: 900px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.cube {
+width: 260px;
+height: 260px;
+transform-style: preserve-3d;
+position: relative;
+}
+
+.face {
+position: absolute;
+width: 260px;
+height: 260px;
+overflow: hidden;
+backface-visibility: hidden;
+}
+
+.face img {
+width: 100%;
+height: 100%;
+display: block;
+image-rendering: pixelated;
+}
+
+/* Cube faces */
+
+.front {
+transform: translateZ(130px);
+}
+
+.back {
+transform: rotateY(180deg) translateZ(130px);
+}
+
+.right {
+transform: rotateY(90deg) translateZ(130px);
+}
+
+.left {
+transform: rotateY(-90deg) translateZ(130px);
+}
+
+.top {
+transform: rotateX(90deg) translateZ(130px);
+}
+
+.bottom {
+transform: rotateX(-90deg) translateZ(130px);
+}
+
+/* Pumpkin glow */
+
+.glow-overlay {
+position: absolute;
+inset: 0;
+width: 100%;
+height: 100%;
+opacity: 0;
+pointer-events: none;
+mix-blend-mode: screen;
+}
+
+.front.glowing .glow-overlay {
+animation: pumpkinGlow 0.9s ease-out;
+}
+
+@keyframes pumpkinGlow {
+0% {
+opacity: 0;
+filter:
+drop-shadow(0 0 0px #ff6500)
+drop-shadow(0 0 0px #ff9d00);
+}
+
+25% {
+    opacity: 1;
+    filter:
+        drop-shadow(0 0 18px #ff6500)
+        drop-shadow(0 0 35px #ff9d00);
+}
+
+100% {
+    opacity: 0;
+    filter:
+        drop-shadow(0 0 5px #ff6500)
+        drop-shadow(0 0 10px #ff9d00);
+}
+}
+
+/* =========================
+COUNTDOWN
+========================= */
+
+#countdown {
+position: relative;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 14px;
+font-family: "Minecraft", monospace;
+}
+
+/* Each number group */
+
+.number-group {
+display: flex;
+flex-direction: row;
+align-items: center;
+gap: 4px;
+position: relative;
+}
+
+/* Individual square digit */
+
+.digit {
+position: relative;
+
+width: 45px;
+height: 55px;
+
+overflow: hidden;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+background: #15100d;
+
+border: 3px solid #6b2808;
+border-radius: 2px;
+
+color: #ffffff;
+font-family: "Minecraft", monospace;
+font-size: 36px;
+
+box-shadow:
+    inset 0 0 0 1px #301106,
+    0 4px 0 #090604,
+    0 7px 12px rgba(0, 0, 0, 0.65);
+
+transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+/* Make the animated numbers fill the square */
+
+.digit-value {
+position: absolute;
+inset: 0;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+font-family: "Minecraft", monospace;
+font-size: 36px;
+}
+
+/* New number comes from above */
+
+.new-value {
+transform: translateY(-100%);
+}
+
+/* Old number starts in the normal position */
+
+.old-value {
+transform: translateY(0);
+}
+
+/* Animate only changed digits */
+
+.digit.changing .new-value {
+animation: digitIn 0.45s ease-out forwards;
+}
+
+.digit.changing .old-value {
+animation: digitOut 0.45s ease-out forwards;
+}
+
+@keyframes digitIn {
+from {
+transform: translateY(-100%);
+}
+
+to {
+    transform: translateY(0);
+}
+}
+
+@keyframes digitOut {
+from {
+transform: translateY(0);
+}
+
+to {
+    transform: translateY(100%);
+}
+}
+
+/* =========================
+CLICK GLOW
+========================= */
+
+#countdown.glowing .digit {
+animation: orangeOutlineGlow 0.9s ease-out;
+}
+
+@keyframes orangeOutlineGlow {
+0% {
+border-color: #6b2808;
+
+    box-shadow:
+        inset 0 0 0 1px #301106,
+        0 4px 0 #090604,
+        0 7px 12px rgba(0, 0, 0, 0.65);
+}
+
+25% {
+    border-color: #ff7a00;
+
+    box-shadow:
+        inset 0 0 10px rgba(255, 100, 0, 0.2),
+        0 0 8px #ff6500,
+        0 0 20px #ff6500,
+        0 0 35px rgba(255, 140, 0, 0.8),
+        0 7px 16px rgba(0, 0, 0, 0.65);
+}
+
+55% {
+    border-color: #ff9a00;
+
+    box-shadow:
+        inset 0 0 12px rgba(255, 120, 0, 0.25),
+        0 0 10px #ff6500,
+        0 0 25px #ff6500,
+        0 0 45px rgba(255, 140, 0, 0.7),
+        0 7px 16px rgba(0, 0, 0, 0.65);
+}
+
+100% {
+    border-color: #6b2808;
+
+    box-shadow:
+        inset 0 0 0 1px #301106,
+        0 4px 0 #090604,
+        0 7px 12px rgba(0, 0, 0, 0.65);
+}
+}
+
+/* Labels */
+
+.unit-label {
+position: absolute;
+bottom: -22px;
+left: 50%;
+transform: translateX(-50%);
+
+color: #777;
+font-family: "Minecraft", monospace;
+font-size: 11px;
+letter-spacing: 1px;
+white-space: nowrap;
+}
+
+/* Separators */
+
+.separator {
+height: 68px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+padding-bottom: 4px;
+
+color: #777;
+font-family: "Minecraft", monospace;
+font-size: 30px;
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media (max-width: 700px) {
+.wrapper {
+transform: scale(0.75);
+}
+}
