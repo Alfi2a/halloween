@@ -329,6 +329,27 @@ font-size: 30px;
 }
 
 /* =========================
+TOP TITLE & FOOTER CREDIT
+========================= */
+
+.top-title {
+  max-width: 512px;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+  display: block;
+}
+
+.footer-credit {
+  color: #777;
+  font-family: "Minecraft", monospace;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* =========================
 MOBILE
 ========================= */
 

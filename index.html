@@ -1,63 +1,81 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>.</title>
-    <link rel="icon" href="Textures/pumpkin_front.png">
+<title>.</title>
+<link rel="icon" href="Textures/pumpkin_front.png">
 
-    <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css">
+
 </head>
 
 <body>
 
-    <div class="wrapper">
-        <div class="scene">
-            <div class="cube" id="pumpkin">
+<div class="wrapper">
 
-                <!-- Front -->
-                <div class="face front">
-                    <img src="Textures/pumpkin_front.png" alt="">
-                    <img
-                        src="Textures/pumpkin_glowing.png"
-                        class="glow-overlay"
-                        alt=""
-                    >
-                </div>
+    <!-- Title -->
+    <img
+        src="Textures/title.png"
+        class="top-title"
+        alt="Title"
+    >
 
-                <!-- Back -->
-                <div class="face back">
-                    <img src="Textures/pumpkin_front.png" alt="">
-                </div>
+    <!-- Pumpkin -->
+    <div class="scene">
+        <div class="cube" id="pumpkin">
 
-                <!-- Right -->
-                <div class="face right">
-                    <img src="Textures/pumpkin_side.png" alt="">
-                </div>
-
-                <!-- Left -->
-                <div class="face left">
-                    <img src="Textures/pumpkin_side.png" alt="">
-                </div>
-
-                <!-- Top -->
-                <div class="face top">
-                    <img src="Textures/pumpkin_top.png" alt="">
-                </div>
-
-                <!-- Bottom -->
-                <div class="face bottom">
-                    <img src="Textures/pumpkin_bottom.png" alt="">
-                </div>
-
+            <!-- Front -->
+            <div class="face front">
+                <img src="Textures/pumpkin_front.png" alt="">
+                <img
+                    src="Textures/pumpkin_glowing.png"
+                    class="glow-overlay"
+                    alt=""
+                >
             </div>
-        </div>
 
-        <div id="countdown"></div>
+            <!-- Back -->
+            <div class="face back">
+                <img src="Textures/pumpkin_front.png" alt="">
+            </div>
+
+            <!-- Right -->
+            <div class="face right">
+                <img src="Textures/pumpkin_side.png" alt="">
+            </div>
+
+            <!-- Left -->
+            <div class="face left">
+                <img src="Textures/pumpkin_side.png" alt="">
+            </div>
+
+            <!-- Top -->
+            <div class="face top">
+                <img src="Textures/pumpkin_top.png" alt="">
+            </div>
+
+            <!-- Bottom -->
+            <div class="face bottom">
+                <img src="Textures/pumpkin_bottom.png" alt="">
+            </div>
+
+        </div>
     </div>
 
-    <script src="code.js"></script>
+    <!-- Countdown -->
+    <div id="countdown"></div>
+
+    <!-- Footer -->
+    <div class="footer-credit">
+        Powered by Obscurative Events
+    </div>
+
+</div>
+
+<script src="code.js"></script>
 
 </body>
 </html>
